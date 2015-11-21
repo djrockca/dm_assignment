@@ -31,8 +31,8 @@ public class CharCountDriver {
 		
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(LongWritable.class);
-		
-		//job.setPartitionerClass(CharCountPartitioner.class);
+
+		job.setPartitionerClass(CharCountPartitioner.class);
 		job.setCombinerClass(CharCountCombiner.class);
 		job.setNumReduceTasks(2);
 		job.setInputFormatClass(NLinesInputFormat.class);

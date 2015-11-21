@@ -24,7 +24,7 @@ public class CharCountDriver {
 			System.exit(-1);
 		}
 		JobConf conf = new JobConf();
-		Job job = new Job(conf, "charcount");
+		Job job = Job.getInstance(conf, "charcount");
 		job.setJarByClass(CharCountDriver.class);
 		job.setMapperClass(CharCountMapper.class);
 		job.setReducerClass(CharCountReducer.class);

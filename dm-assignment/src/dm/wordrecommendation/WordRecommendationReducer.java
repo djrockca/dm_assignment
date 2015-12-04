@@ -1,7 +1,4 @@
-/**The Anagram reducer class groups the values of the sorted keys that came in and 
-* checks to see if the values iterator contains more than one word. if the values 
-* contain more than one word we have spotted a anagram.
-**/
+/**The word recommendation reducer class **/
 package dm.wordrecommendation;
 import java.io.IOException;
 import java.util.ArrayList;

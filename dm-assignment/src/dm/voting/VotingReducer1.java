@@ -1,7 +1,4 @@
-/**The Anagram reducer class groups the values of the sorted keys that came in and 
-* checks to see if the values iterator contains more than one word. if the values 
-* contain more than one word we have spotted a anagram.
-**/
+/**The Voting reducer 1**/
 package dm.voting;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +13,6 @@ public class VotingReducer1 extends Reducer<Text, Text, Text, Text> {
   public void reduce(Text key, Iterable<Text> values, Context context)
       throws IOException, InterruptedException {
 	  
-	  StringBuffer sb = new StringBuffer();
 	  Iterator<Text> it = values.iterator();
 	 
 	  String weight = new String();
@@ -35,11 +31,10 @@ public class VotingReducer1 extends Reducer<Text, Text, Text, Text> {
 	        if (weight.isEmpty()){
 	        	
 	        }else {
-	        	sb.append(votee + "\t" + weight);
-	        	sb.append("\n");
+	        	context.write(new Text(votee + "\t"), new Text(weight));  
 	        }
 	  }
-	  context.write(key, new Text(sb.toString()));  
+	  
 	 
 	 
   }

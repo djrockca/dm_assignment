@@ -1,17 +1,18 @@
 package dm.voting;
 
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapred.JobStatus;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Job.JobState;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.jobcontrol.ControlledJob;
 import org.apache.hadoop.mapreduce.lib.jobcontrol.JobControl;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import dm.customreader.NLinesInputFormat;
+import com.google.common.util.concurrent.Service.State;
 
 public class VotingDriver {
 
@@ -27,18 +28,15 @@ public class VotingDriver {
 		job1.setJarByClass(VotingDriver.class);
 		job1.setMapperClass(VotingMapper1.class);
 		job1.setReducerClass(VotingReducer1.class);
-		//job1.setOutputKeyClass(Text.class);
+		job1.setOutputKeyClass(Text.class);
 		job1.setOutputValueClass(Text.class);
 		job1.setNumReduceTasks(1);
-		//job.setInputFormatClass(NLinesInputFormat.class);
-		
 		job1.setMapOutputKeyClass(Text.class);
 		job1.setMapOutputValueClass(Text.class);
 		
 		FileInputFormat.addInputPath(job1, new Path(args[0]));
 		Path tmpDir = new Path(args[1] + "-tmp");
 		FileOutputFormat.setOutputPath(job1, tmpDir);
-
 		ControlledJob cJob1 = new ControlledJob(conf);
 		cJob1.setJob(job1);
 
@@ -49,9 +47,8 @@ public class VotingDriver {
 		job2.setOutputKeyClass(Text.class);
 		job2.setOutputValueClass(LongWritable.class);
 		job2.setNumReduceTasks(1);
-		
-		job1.setMapOutputKeyClass(Text.class);
-		job1.setMapOutputValueClass(Text.class);
+		job2.setMapOutputKeyClass(Text.class);
+		job2.setMapOutputValueClass(LongWritable.class);
 		
 		FileInputFormat.addInputPath(job2, tmpDir);
 		FileOutputFormat.setOutputPath(job2, new Path(args[1]));
@@ -65,17 +62,16 @@ public class VotingDriver {
 
 		Thread thread = new Thread(jobCtrl);
 		thread.start();
-
-		while (!jobCtrl.allFinished()) {
-			if (jobCtrl.getFailedJobList().size() > 0) {
-				System.out.println("Job Failed..." +jobCtrl.getFailedJobList().get(0).getJobName() + " with msg :" + jobCtrl.getFailedJobList().get(0).getMessage());
-				System.exit(1);
-			} else {
-				System.out.println("Still running...");
+			while (!jobCtrl.allFinished()) {
+				System.out.println("Still running jobs...");
 				Thread.sleep(5000);
-			}
 		}
 		
-
+		if (jobCtrl.allFinished()) {
+			System.out.println("Number of Jobs Successful :  " + jobCtrl.getSuccessfulJobList().size());
+			System.out.println("Number of Jobs Failed :  " + jobCtrl.getFailedJobList().size());
+			System.out.println("Process complete");
+			System.exit(1);
+		}
 	}
 }

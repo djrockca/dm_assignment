@@ -23,8 +23,6 @@ public class WordRecommendationDriver {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
 		conf.set("textiputformat.record.delimeter", ".");
-		//job.setNumReduceTasks(2);
-		//job.setInputFormatClass(NLinesInputFormat.class);
 		
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);

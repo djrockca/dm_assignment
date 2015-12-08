@@ -4,8 +4,6 @@ import java.io.IOException;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-import org.apache.commons.lang.StringUtils;
-
 public class VotingMapper1 extends Mapper<Object, Text, Text, Text> {
 
 	  @Override

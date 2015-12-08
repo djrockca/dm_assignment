@@ -124,13 +124,12 @@ public class VotingUnitTest {
 				"C 11"  + "\n" +
 				"D 12"  + "\n" )));
 		
-	//	mapReduceDriver.addInput(new Pair<Object, Text>("2", new Text(
-		//		"the cat act in tic tac toe")));
+		
 		List<Pair<Text, Text>> output = mapReduceDriver.run();
 		
 		for (Pair<Text, Text> p : output) {
-			//System.out.println(p.getFirst() + " - " + p.getSecond());
-			System.out.println(p.getSecond());
+			System.out.println(p.getFirst() + "" + p.getSecond());
+			//System.out.println(p.getSecond());
 		}
 	}
 	
@@ -141,36 +140,12 @@ public class VotingUnitTest {
 	@Test
 	public void testMapReduce2() throws IOException {
 
-		mapReduceDriver.addInput(new Pair<Object, Text>("1", new Text(
-				"A C" + "\n" +
-				"A B" + "\n" +
-				"B C" + "\n" +
-				"C F" + "\n" +
-				"F C" + "\n" +
-				"A 5"  + "\n" +
-				"B 1"  + "\n" +
-				"C 11"  + "\n" +
-				"D 12"  + "\n" )));
-		
-	//	mapReduceDriver.addInput(new Pair<Object, Text>("2", new Text(
-		//		"the cat act in tic tac toe")));
-		List<Pair<Text, Text>> output = mapReduceDriver.run();
-		
-		for (Pair<Text, Text> p : output) {
-			//System.out.println(p.getFirst() + " - " + p.getSecond());
-			System.out.println(p.getSecond());
-		}
-		
-		mapReduceDriver2.addInput(new Pair<Object, Text>("1", new Text(
-				"C 5" + "\n" +
-				"B 5" + "\n" +
-				"C 1" + "\n" +
-				"F 11" + "\n")));
-		
+		mapReduceDriver2.addInput(new Pair<Object, Text>("2", new Text(
+				"c	5\nb	5\nc	1\nf	11")));
 		List<Pair<Text, LongWritable>> output2 = mapReduceDriver2.run();
 		
 		for (Pair<Text, LongWritable> p1 : output2) {
-			System.out.println(p1.getFirst() + " - " + p1.getSecond());
+			System.out.println(p1.getFirst() + " " + p1.getSecond());
 		}
 		
 	}

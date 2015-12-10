@@ -1,3 +1,24 @@
+/** This map reduce program processes file that contains DNA sequence of people. It finds all the people who have same DNAs.
+ 
+Input:
+“User1 ACGT” 
+“User2 TGCA”
+“User3 ACG”
+“User4 ACGT”
+“User5 ACG”
+“User6 AGCT”
+ 
+
+Output: 
+User1, User4
+User2
+User3, User 5
+User6
+
+Hadoop Command to run:
+hadoop jar dm-assignment.jar dm.dna.DNADriver Assignments/input/dna.txt /user/djrockca4306/Assignments/mr/dna/output
+
+ */
 package dm.dna;
 
 import org.apache.hadoop.fs.Path;
@@ -22,9 +43,6 @@ public class DNADriver {
 		
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
-		
-		//job.setNumReduceTasks(2);
-		//job.setInputFormatClass(NLinesInputFormat.class);
 		
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);

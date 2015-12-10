@@ -1,4 +1,4 @@
-/**The Anagram reducer class groups the values of the sorted keys that came in and 
+/**The Anagram reducer class receives the values of the sorted keys that came in and 
 * checks to see if the values iterator contains more than one word. if the values 
 * contain more than one word we have spotted a anagram.
 **/
@@ -17,14 +17,15 @@ public class AnagramReducer extends Reducer<Text, Text, Text, Text> {
 	  
 	  StringBuffer sb = new StringBuffer();
 	  Iterator<Text> it = values.iterator();
+	  //loop through values of sorted anagram and append to string buffer to create output value
 	  while (it.hasNext()){
 	        Text anagram = (Text) it.next();
 	        sb.append(anagram);
-	        
 	        sb.append("~");
 	  }
 	  String[] anagrams = sb.toString().split("~");
-	  if (anagrams.length >= 2) {
+	//emit anagram if more than one value exists for sorted word key
+	  if (anagrams.length >= 2) {   
           context.write(key, new Text(sb.toString().replace("~", ",")));  
 	  }
   }

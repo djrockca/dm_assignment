@@ -1,3 +1,16 @@
+/**
+ * Map reduce program to formulate the next word recommendation based on the content from a very large text archive
+ *
+ *	For each word, prepare a top 5 recommendations of the words that would go next.
+ *	e.g. 
+ *	happy 	birthday, newyear, marriage
+ *  how 	are, do, did
+ *	
+ *  Command to run:
+ *	hadoop jar dm-assignment.jar dm.wordrecommendation.WordRecommentationDriver Dilshad/input/big.txt Dilshad/WordRecommendation/output
+ *
+ * 
+ */
 package dm.wordrecommendation;
 
 import org.apache.hadoop.fs.Path;

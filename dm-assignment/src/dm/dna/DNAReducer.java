@@ -1,4 +1,7 @@
-/**The dna reducer class.**/
+/**The dna reducer class.
+ * Hadoop sorts and groups the values by user.  
+ * Reducer receives data in key value pairs and emits grouped values as string for each key
+ * **/
 package dm.dna;
 import java.io.IOException;
 import java.util.Iterator;

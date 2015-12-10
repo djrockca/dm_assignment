@@ -1,3 +1,11 @@
+/** Mapper for processing dna file
+ * Split each line 
+ * loop through array of lines where each word is delimited by tab
+ * find key value pair  where key is user and value is dna
+ * find the reverse dna
+ * compare to determine if dna lexicographically follows its reverse value,  if so make reverse as the key
+ * emit key value pair
+ */
 package dm.dna.mirror;
 import java.io.IOException;
 

@@ -1,3 +1,6 @@
+/**
+ * Partitioner determines which characters to send to reducer 1 or 2
+ **/
 package dm.charcount;
 
 import org.apache.hadoop.io.IntWritable;

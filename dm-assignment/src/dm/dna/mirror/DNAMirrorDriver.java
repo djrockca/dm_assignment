@@ -1,3 +1,21 @@
+/** This map reduce program processes file that contains DNA sequence of people. It finds all the people who have same or mirror image of DNAs.
+ 
+Input:
+
+“User1 ACGT”
+“User2 TGCA”
+“User3 ACG”
+“User4 ACGT”
+“User5 ACG”
+
+Output:
+User1, User2, User4
+User3, User 5
+
+Hadoop Command to run:
+hadoop jar dm-assignment.jar dm.dna.mirror.DNAMirrorDriver Assignments/input/dnamirror.txt /user/djrockca4306/Assignments/mr/dnamirror/output
+
+ */
 package dm.dna.mirror;
 
 import org.apache.hadoop.fs.Path;
@@ -6,8 +24,6 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
-import dm.customreader.NLinesInputFormat;
 
 public class DNAMirrorDriver {
 
@@ -24,9 +40,6 @@ public class DNAMirrorDriver {
 		
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
-		
-		//job.setNumReduceTasks(2);
-		//job.setInputFormatClass(NLinesInputFormat.class);
 		
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);

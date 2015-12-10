@@ -1,3 +1,11 @@
+/**This map reduce program finds anagrams in a huge text. 
+ * An anagram is basically a different arrangement of letters in a word. Anagram does not need to be meaningful.
+ * Input: “the cat act in tic tac toe.”
+ * Output: cat, tac, act
+ * 
+ *  Command to run on hadoop: 
+ * hadoop jar dm-assignment.jar dm.anagram.AnagramDriver Assignments/input/anagram.txt /user/djrockca4306/Assignments/mr/anagram/output
+***/
 package dm.anagram;
 
 import org.apache.hadoop.fs.Path;
@@ -9,7 +17,6 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import dm.anagram.AnagramMapper;
 import dm.anagram.AnagramReducer;
-//import dm.customreader.NLinesInputFormat;
 
 public class AnagramDriver {
 
@@ -28,7 +35,6 @@ public class AnagramDriver {
 		job.setOutputValueClass(Text.class);
 		
 		job.setNumReduceTasks(2);
-		//job.setInputFormatClass(NLinesInputFormat.class);
 		
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);

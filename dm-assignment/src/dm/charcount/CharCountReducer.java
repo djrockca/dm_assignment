@@ -1,3 +1,6 @@
+/** Reducer receives grouped data by key, finds the character frequency count for values
+ *  
+ */
 package dm.charcount;
 import java.io.IOException;
 

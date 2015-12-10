@@ -1,4 +1,7 @@
-/**The dna mirror reducer class **/
+/**The dna mirror reducer class 
+ * Hadoop sorts and groups the values by user.  
+ * Reducer receives data in key value pairs and emits grouped values as string for each key
+ * **/
 package dm.dna.mirror;
 import java.io.IOException;
 import java.util.Iterator;
@@ -19,9 +22,7 @@ public class DNAMirrorReducer extends Reducer<Text, Text, Text, Text> {
 	        sb.append(user);
 	        sb.append("~");
 	  }
-	 // String[] users = sb.toString().split("~");
-	  //if (users.length >= 2) {
-          context.write(key, new Text(sb.toString().replace("~", ",")));  
-	  //}
+	  context.write(key, new Text(sb.toString().replace("~", ",")));  
+	
   }
 }

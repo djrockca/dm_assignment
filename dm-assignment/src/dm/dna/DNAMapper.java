@@ -1,3 +1,9 @@
+/** Mapper for processing dna file
+ * Split each line 
+ * loop through array of lines where each word is delimited by tab
+ * find key value pair  where key is user and value is dna
+ * emit key value pair
+ */
 package dm.dna;
 import java.io.IOException;
 

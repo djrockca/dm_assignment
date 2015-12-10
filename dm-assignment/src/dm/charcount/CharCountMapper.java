@@ -1,3 +1,9 @@
+/**
+ * Mapper receives one line as input.  
+ * It cleans up to remove any non alphabets and special characters
+ * converts the line to lower case
+ * loops through the line characters and emits out put as char, 1 as key, value pair
+ */
 package dm.charcount;
 import java.io.IOException;
 

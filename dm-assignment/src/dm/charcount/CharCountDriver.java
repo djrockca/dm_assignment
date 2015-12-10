@@ -1,3 +1,11 @@
+/** This map reduce program finds frequency of characters in a huge text
+ * The mapper receives one line as input until all lines form huge text are processed.
+ * Reducer finds the frequency count
+ * 
+ * Command to run on hadoop
+ * hadoop jar dm-assignment.jar dm.charcount.CharCountDriver Assignments/input/big.txt /user/djrockca4306/Assignments/mr/charcount/output
+ * 
+ */
 package dm.charcount;
 
 import org.apache.hadoop.fs.Path;

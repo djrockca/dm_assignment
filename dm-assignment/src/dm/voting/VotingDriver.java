@@ -1,3 +1,51 @@
+/**
+ * Map reduce program to compute voting worth
+ * 
+ * Problem Statement:
+ * In an unusual democracy, everyone is not equal. The vote count is a function of worth of the voter. Though everyone is voting for each other.
+ * Find out what is the vote count of everyone?
+ *
+ *
+ * As example, if A with a worth of 5 and B with a worth of 1 are voting  for C, the vote count of C would be 6.
+ * You are given a list of people with their value of vote. You are also given  another list describing who voted for who all. 
+ *
+ *
+ * 	List1
+ *
+ *	Voter Votee
+ *
+ *	A 		C
+ *  B 		C
+ *  C 		F
+ *  A 		B
+ *
+ *  List2 
+ *  
+ *  Person Worth
+ *	A 		5
+ *  B 		1
+ *  C 		11
+ *  D 		12
+ * 
+ * Result
+ * Person VoteCount
+ * 
+ * B 		5
+ * C 		6
+ * F 		11
+ * 
+ * Command to run
+ * hadoop jar dm-assignment.jar dm.voting.VotingDriver /user/djrockca4306/Assignments/input/voting /user/djrockca4306/Assignments/mr/voting/output
+ */
+
+ /**
+  * This solution uses 2 reduce phases to solve the problem.  
+  * In the first phase the mapper mergers the 2 input list.
+  * Hadoop provides reducer values (votee and worth) grouped by key (voter)
+  * Reducer1 computes computes votee worth 
+  * In phase 2 , the reducer sums up the worth and emits the output
+  * The jobs are chained and only after first map-reduce job finishes, can the second one start.
+  */
 package dm.voting;
 
 import org.apache.hadoop.fs.Path;

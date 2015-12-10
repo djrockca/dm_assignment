@@ -7,8 +7,9 @@
  *  joined output expected: 
  *  User Login	User Name	State	tweet id	Tweeted Message	User Login
  * 
- * Command to run
- * hadoop jar dm-assignment.jar dm.voting.VotingDriver /user/djrockca4306/Assignments/input/voting /user/djrockca4306/Assignments/mr/voting/output
+ * Command to run (takes 3 arguments)
+ * hadoop jar dm-assignment.jar dm.join.user.tweets.JoinUserTweetsDriver Assignments/input/pig/users.csv Assignments/input/pig/tweets.csv 
+ * /user/djrockca4306/Assignments/mr/joinusertweets/output
 **/
 
 /**
